@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import { Category } from "../models/Category";
 import { Role } from "../models/Role";
 import { User } from "../models/User";
+import { Cart } from "../models/Cart";
 
 dotenv.config();
 
@@ -16,7 +17,7 @@ export const AppDataSource = new DataSource({
   database: process.env.DATABASE_NAME,
   synchronize: true,
   logging: false,
-  entities: [Item, Category, User, Role],
+  entities: [Item, Category, User, Role, Cart],
   migrations: [],
   subscribers: [],
 });

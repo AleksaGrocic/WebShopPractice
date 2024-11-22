@@ -4,6 +4,7 @@ import {
   Column,
   ManyToOne,
   JoinColumn,
+  ManyToMany,
 } from "typeorm";
 import { Category } from "./Category";
 
@@ -16,7 +17,6 @@ export class Item {
   name!: string;
 
   @ManyToOne(() => Category, (category) => category.items, { eager: true })
-  @JoinColumn({ name: "category_id" })
   category!: Category;
 
   @Column("decimal")

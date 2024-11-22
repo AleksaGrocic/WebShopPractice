@@ -4,8 +4,10 @@ import {
   Column,
   ManyToOne,
   JoinColumn,
+  OneToOne,
 } from "typeorm";
 import { Role } from "./Role";
+import { Cart } from "./Cart";
 
 @Entity()
 export class User {
@@ -26,6 +28,10 @@ export class User {
 
   @Column("decimal")
   balance!: number;
+
+  @OneToOne(() => Cart, (cart) => cart.user)
+  @JoinColumn({ name: "cart" })
+  cart!: Cart;
 
   @ManyToOne(() => Role, (role) => role.users, { eager: true })
   @JoinColumn({ name: "role_id" })
